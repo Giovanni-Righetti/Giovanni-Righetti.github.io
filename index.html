@@ -177,12 +177,11 @@
 
   .hero-links a svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-
   /* ── Featured research ──────────────────── */
   .featured-section {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 2rem 2rem 0;
+    padding: 1.5rem 2rem 0;
   }
 
   .featured-section h2 {
@@ -247,45 +246,39 @@
     font-weight: 500;
   }
 
-    /* ── News ───────────────────────────────── */
+  /* ── News ───────────────────────────────── */
   .news-section {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 1.5rem 2rem 0;
+    padding: 2rem 2rem 0;
   }
 
   .news-section h2 {
     font-family: var(--serif);
     font-size: 1.35rem;
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
 
-  .news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
+  .news-list {
+    list-style: none;
+    padding: 0;
   }
 
-  .news-card {
-    background: var(--bg-card);
-    border-radius: 6px;
-    padding: 1.1rem 1.3rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
-    border-left: 3px solid var(--accent);
+  .news-list li {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
   }
 
-  .news-date {
-    font-size: 0.72rem;
+  .news-list li:last-child { border-bottom: none; }
+
+  .news-list .news-date {
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--accent);
-    margin-bottom: 0.3rem;
+    color: var(--ink);
   }
-
-  .news-card p { font-size: 0.87rem; color: var(--ink-light); line-height: 1.55; }
-
 
   /* ── Footer ─────────────────────────────── */
   footer {
@@ -308,7 +301,6 @@
     nav .nav-links { gap: 1rem; }
     nav .nav-links a { font-size: 0.74rem; }
     header, .news-section, .featured-section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .news-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -337,6 +329,11 @@
         <p class="hero-bio">
           I study how pharmaceutical regulation and pricing policy shape market outcomes across countries. My work combines theoretical models with causal empirical methods, at the intersection of health economics and industrial organization. I am part of the <a href="https://hiprixhorizon.eu/" target="_blank">HI-PRIX</a> Horizon Europe project, supervised by <a href="https://www.novasbe.unl.pt/en/faculty-research/faculty/faculty-detail/id/13/pedro-pita-barros" target="_blank">Pedro Pita Barros</a>. I received my Ph.D. from the University of Verona in 2024.
         </p>
+        <div class="hero-fields">
+          <span class="field-tag">Health Economics</span>
+          <span class="field-tag">Industrial Organization</span>
+          <span class="field-tag">Applied Microeconomics</span>
+        </div>
         <div class="hero-links">
           <a href="mailto:giovanni.righetti@novasbe.pt">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 8 10-8"/></svg>
@@ -346,9 +343,9 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
             Scholar
           </a>
-          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=YOUR_ID" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            SSRN
+          <a href="https://orcid.org/0000-0002-5455-7408" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.181-3.722-3.878-3.722h-2.441z"/></svg>
+            ORCID
           </a>
           <a href="https://www.linkedin.com/in/YOUR_ID" target="_blank">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
@@ -363,24 +360,6 @@
     </div>
   </div>
 </header>
-
-<div class="news-section">
-  <h2>News</h2>
-  <div class="news-grid">
-    <div class="news-card">
-      <div class="news-date">April 2026</div>
-      <p>"The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" accepted at the <em>European Journal of Health Economics</em>.</p>
-    </div>
-    <div class="news-card">
-      <div class="news-date">June 2026</div>
-      <p>Presenting at the X American-European Health Economics Study Group, Hertie School, Berlin.</p>
-    </div>
-    <div class="news-card">
-      <div class="news-date">July 2026</div>
-      <p>Two papers at EuHEA 2026 in Rotterdam.</p>
-    </div>
-  </div>
-</div>
 
 <div class="featured-section">
   <h2>Featured Research</h2>
@@ -397,6 +376,15 @@
     </div>
   </div>
   <a href="research.html" class="see-all-link">See all publications &amp; working papers →</a>
+</div>
+
+<div class="news-section">
+  <h2>News</h2>
+  <ul class="news-list">
+    <li><span class="news-date">Apr 2026</span> — "The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" accepted at the <em>European Journal of Health Economics</em>.</li>
+    <li><span class="news-date">Jun 2026</span> — Presenting at the X American-European Health Economics Study Group, Hertie School, Berlin.</li>
+    <li><span class="news-date">Jul 2026</span> — Two papers at EuHEA 2026 in Rotterdam.</li>
+  </ul>
 </div>
 
 <footer>
