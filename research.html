@@ -165,7 +165,10 @@
     font-size: 0.87rem;
     color: var(--ink-light);
     line-height: 1.65;
-    margin-top: 0.4rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--rule);
     display: none;
   }
 
@@ -174,16 +177,29 @@
   .abstract-toggle {
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--ink-muted);
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: color 0.2s;
     font-family: var(--sans);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
   }
 
-  .abstract-toggle:hover { text-decoration: underline; color: var(--accent-hover); }
+  .abstract-toggle:hover { color: var(--ink); }
+
+  .abstract-toggle .chevron {
+    display: inline-block;
+    font-size: 0.65rem;
+    transition: transform 0.2s;
+  }
+
+  .abstract-toggle.open .chevron {
+    transform: rotate(90deg);
+  }
 
   .paper-links {
     margin-top: 0.6rem;
@@ -261,13 +277,12 @@
       <span class="paper-award">AIES Young Researchers Prize</span>
       <span class="paper-venue">European Journal of Health Economics, forthcoming</span>
     </div>
+    <button class="abstract-toggle" onclick="toggleAbstract('abs-amnog', this)"><span class="chevron">▶</span> Abstract</button>
     <p class="paper-abstract" id="abs-amnog">
       This paper evaluates the effect of Germany's 2011 AMNOG reform — which introduced mandatory health technology assessment for newly launched drugs — on pharmaceutical prices. Using a difference-in-differences approach, I find significant effects on the pricing of new pharmaceuticals in Germany, with implications for other countries that reference German prices.
     </p>
     <div class="paper-links">
       <a href="http://dx.doi.org/10.2139/ssrn.4828807" target="_blank">SSRN</a>
-      <span class="sep">|</span>
-      <button class="abstract-toggle" onclick="toggleAbstract('abs-amnog', this)">Abstract</button>
     </div>
   </div>
 
@@ -280,13 +295,12 @@
     <div class="paper-meta">
       <span class="paper-status status-review">Under Review</span>
     </div>
+    <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)"><span class="chevron">▶</span> Abstract</button>
     <p class="paper-abstract" id="abs-erp">
       Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
     </p>
     <div class="paper-links">
       <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
-      <span class="sep">|</span>
-      <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)">Abstract</button>
     </div>
   </div>
 
@@ -307,13 +321,12 @@
     <div class="paper-meta">
       <span class="paper-status status-wip">Working Paper</span>
     </div>
+    <button class="abstract-toggle" onclick="toggleAbstract('abs-multi', this)"><span class="chevron">▶</span> Abstract</button>
     <p class="paper-abstract" id="abs-multi">
       We study optimal pricing mechanisms when a single drug treats multiple medical conditions with different clinical benefits. We compare uniform pricing with indication-based pricing, analysing how each mechanism affects access, firm incentives, and overall welfare.
     </p>
     <div class="paper-links">
       <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">SSRN</a>
-      <span class="sep">|</span>
-      <button class="abstract-toggle" onclick="toggleAbstract('abs-multi', this)">Abstract</button>
     </div>
     <div class="paper-media">Media coverage: Netfarma</div>
   </div>
@@ -373,7 +386,7 @@
 function toggleAbstract(id, btn) {
   var el = document.getElementById(id);
   el.classList.toggle('open');
-  btn.textContent = el.classList.contains('open') ? 'Hide abstract' : 'Abstract';
+  btn.classList.toggle('open');
 }
 </script>
 
