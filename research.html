@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Giovanni Righetti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #3d3d3d;
+    --ink-muted: #6e6e6e;
+    --bg: #f5f1eb;
+    --bg-card: #ffffff;
+    --bg-warm: #ece6db;
+    --accent: #8b2500;
+    --accent-hover: #a63000;
+    --teal: #2a6f6f;
+    --teal-soft: rgba(42,111,111,0.08);
+    --rule: #d4cfc6;
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --max-w: 920px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 17px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+  /* ── Nav (shared) ───────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(245,241,235,0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav .nav-inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 0.85rem 2rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  nav .nav-name { font-family: var(--serif); font-weight: 500; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+  nav .nav-name:hover { text-decoration: none; color: var(--accent); }
+  nav .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  nav .nav-links a {
+    font-size: 0.82rem; font-weight: 500; color: var(--ink-muted);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
+  nav .nav-links a.active { color: var(--accent); }
+
+  /* ── Page content ───────────────────────── */
+  .page {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 2.5rem 2rem 1rem;
+  }
+
+  .page h1 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+  }
+
+  .page-intro {
+    font-size: 0.92rem;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* ── Section headings ───────────────────── */
+  .section-heading {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 1.3rem;
+    margin-top: 2.5rem;
+  }
+
+  .section-heading:first-of-type { margin-top: 0; }
+
+  /* ── Paper card ─────────────────────────── */
+  .paper {
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
+    margin-bottom: 1rem;
+  }
+
+  .paper-title {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 0.15rem;
+  }
+
+  .paper-authors {
+    font-size: 0.84rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .paper-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .paper-status {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.16rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .status-published { background: #e8f5e9; color: #2e7d32; }
+  .status-accepted { background: #e8f5e9; color: #2e7d32; }
+  .status-review { background: #fff3e0; color: #e65100; }
+  .status-rr { background: #e3f2fd; color: #1565c0; }
+  .status-submitted { background: #f3e5f5; color: #7b1fa2; }
+  .status-wip { background: var(--bg-warm); color: var(--ink-muted); }
+
+  .paper-award {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.16rem 0.5rem;
+    border-radius: 3px;
+    background: #fff8e1;
+    color: #f57f17;
+  }
+
+  .paper-venue {
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .paper-abstract {
+    font-size: 0.87rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-top: 0.4rem;
+  }
+
+  .paper-links {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .paper-links a { font-size: 0.8rem; font-weight: 500; }
+
+  .paper-media {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-top: 0.3rem;
+  }
+
+  /* ── WIP list ───────────────────────────── */
+  .wip-card {
+    background: var(--bg-card);
+    border-radius: 6px;
+    padding: 1.1rem 1.4rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
+    margin-bottom: 0.75rem;
+  }
+
+  .wip-card .paper-title { font-size: 0.98rem; }
+
+  /* ── Footer ─────────────────────────────── */
+  footer {
+    max-width: var(--max-w); margin: 0 auto;
+    padding: 3rem 2rem 2.5rem; text-align: center;
+    font-size: 0.82rem; color: var(--ink-muted);
+  }
+
+  /* ── Responsive ─────────────────────────── */
+  @media (max-width: 640px) {
+    html { font-size: 16px; }
+    nav .nav-inner { padding: 0.8rem 1.2rem; }
+    nav .nav-links { gap: 1rem; }
+    nav .nav-links a { font-size: 0.74rem; }
+    .page { padding: 2rem 1.2rem 1rem; }
+    footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .paper { padding: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Giovanni Righetti</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="https://drive.google.com/file/d/1faH7_Q2hUYObnsPO-qEQsoWTHOkmZwOl/view" target="_blank">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <h1>Research</h1>
+  <p class="page-intro">My research lies at the intersection of health economics and industrial organization, with a focus on pharmaceutical regulation and pricing policy.</p>
+
+  <!-- ═══ Publications ═══ -->
+  <h2 class="section-heading">Publications</h2>
+
+  <div class="paper">
+    <div class="paper-title">The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany</div>
+    <div class="paper-authors">Giovanni Righetti</div>
+    <div class="paper-meta">
+      <span class="paper-status status-accepted">Accepted</span>
+      <span class="paper-award">AIES Young Researchers Prize</span>
+      <span class="paper-venue">European Journal of Health Economics, forthcoming</span>
+    </div>
+    <p class="paper-abstract">
+      This paper evaluates the effect of Germany's 2011 AMNOG reform — which introduced mandatory health technology assessment for newly launched drugs — on pharmaceutical prices. Using a difference-in-differences approach, I find significant effects on the pricing of new pharmaceuticals in Germany, with implications for other countries that reference German prices.
+    </p>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.4828807" target="_blank">SSRN →</a>
+    </div>
+  </div>
+
+  <!-- ═══ Working Papers ═══ -->
+  <h2 class="section-heading">Working Papers &amp; Submitted Work</h2>
+
+  <div class="paper">
+    <div class="paper-title">Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
+    <div class="paper-authors">with Simona Gamba and Paolo Pertile</div>
+    <div class="paper-meta">
+      <span class="paper-status status-review">Under Review</span>
+    </div>
+    <p class="paper-abstract">
+      Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
+    </p>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN →</a>
+    </div>
+  </div>
+
+  <div class="paper">
+    <div class="paper-title">On the Long-Term Effect of Most Favored Nation Drug Pricing</div>
+    <div class="paper-authors">with Pedro Pita Barros and Leonor Sá</div>
+    <div class="paper-meta">
+      <span class="paper-status status-submitted">Submitted</span>
+    </div>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.6373278" target="_blank">SSRN →</a>
+    </div>
+  </div>
+
+  <div class="paper">
+    <div class="paper-title">Pricing Mechanisms for Multi-Indication Drugs</div>
+    <div class="paper-authors">with Pedro Pita Barros and Leonor Sá</div>
+    <div class="paper-meta">
+      <span class="paper-status status-wip">Working Paper</span>
+    </div>
+    <p class="paper-abstract">
+      We study optimal pricing mechanisms when a single drug treats multiple medical conditions with different clinical benefits. We compare uniform pricing with indication-based pricing, analysing how each mechanism affects access, firm incentives, and overall welfare.
+    </p>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">SSRN →</a>
+    </div>
+    <div class="paper-media">Media coverage: Netfarma</div>
+  </div>
+
+  <!-- ═══ Policy Outputs ═══ -->
+  <h2 class="section-heading">Policy Work</h2>
+
+  <div class="paper">
+    <div class="paper-title">Regulação Farmacêutica em Contexto Internacional: Implicações para o SNS</div>
+    <div class="paper-authors">Nova SBE, Social Equity Initiative — Health Economics Chair (2026)</div>
+    <div class="paper-media">Media coverage: Correio da Manhã, Rádio Renascença, Jornal Económico</div>
+  </div>
+
+  <div class="paper">
+    <div class="paper-title">Most Favored Nation Drug Pricing: Anchoring to a Moving Target</div>
+    <div class="paper-authors">with Pedro Pita Barros and Leonor Sá — Submitted to Health Affairs Forefront (2026)</div>
+  </div>
+
+  <!-- ═══ Work in Progress ═══ -->
+  <h2 class="section-heading">Work in Progress</h2>
+
+  <div class="wip-card">
+    <div class="paper-title">Escaping the ERP Trap</div>
+    <div class="paper-authors">with Paolo Pertile</div>
+  </div>
+
+  <div class="wip-card">
+    <div class="paper-title">Mind the Gap: Toward an Equity-Conscious Pricing System for Multi-Indication Drugs</div>
+    <div class="paper-authors">with P.P. Barros, B. Haon, L. Rochaix, and L. Sá</div>
+  </div>
+
+  <div class="wip-card">
+    <div class="paper-title">The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Measured Therapeutic Benefit of Cancer Drugs</div>
+    <div class="paper-authors">with A. Gentilini, C. Santos, M. Miraldo, P.P. Barros, and L. Sá</div>
+  </div>
+
+  <div class="wip-card">
+    <div class="paper-title">Losing Control: Patient Organizations and Retention in Randomized Clinical Trials</div>
+    <div class="paper-authors">Solo-authored</div>
+  </div>
+
+  <div class="wip-card">
+    <div class="paper-title">The Price of Choice: How Private Hospital Access Shapes Out-of-Pocket Spending</div>
+    <div class="paper-authors">with P. Bertoli and C. Fertonani</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    Giovanni Righetti · <a href="mailto:giovanni.righetti@novasbe.pt">giovanni.righetti@novasbe.pt</a><br>
+    NHEM Knowledge Center, Nova SBE · Campus de Carcavelos, Portugal
+  </p>
+</footer>
+
+</body>
+</html>
