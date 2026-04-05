@@ -18,7 +18,6 @@
     --accent: #8b2500;
     --accent-hover: #a63000;
     --teal: #2a6f6f;
-    --teal-soft: rgba(42,111,111,0.08);
     --rule: #d4cfc6;
     --serif: 'Newsreader', Georgia, serif;
     --sans: 'DM Sans', -apple-system, sans-serif;
@@ -39,7 +38,7 @@
   a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
   a:hover { color: var(--accent-hover); text-decoration: underline; }
 
-  /* ── Nav (shared) ───────────────────────── */
+  /* ── Nav ─────────────────────────────────── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(245,241,235,0.92);
@@ -60,7 +59,7 @@
   nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
   nav .nav-links a.active { color: var(--accent); }
 
-  /* ── Page content ───────────────────────── */
+  /* ── Page ────────────────────────────────── */
   .page {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -72,16 +71,10 @@
     font-size: 2rem;
     font-weight: 400;
     letter-spacing: -0.02em;
-    margin-bottom: 0.3rem;
-  }
-
-  .page-intro {
-    font-size: 0.92rem;
-    color: var(--ink-muted);
     margin-bottom: 2rem;
   }
 
-  /* ── Section headings ───────────────────── */
+  /* ── Section heading (outside card) ─────── */
   .section-heading {
     font-family: var(--serif);
     font-size: 1.25rem;
@@ -95,13 +88,23 @@
 
   .section-heading:first-of-type { margin-top: 0; }
 
-  /* ── Paper card ─────────────────────────── */
-  .paper {
+  /* ── Grouped card ───────────────────────── */
+  .group-card {
     background: var(--bg-card);
     border-radius: 6px;
-    padding: 1.4rem 1.6rem;
+    padding: 1.6rem 1.8rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
-    margin-bottom: 1rem;
+  }
+
+  /* ── Paper item inside card ─────────────── */
+  .paper-item {
+    padding: 0.2rem 0;
+  }
+
+  .paper-item + .paper-item {
+    margin-top: 1.3rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid #f0ede8;
   }
 
   .paper-title {
@@ -115,64 +118,23 @@
   .paper-authors {
     font-size: 0.84rem;
     color: var(--ink-muted);
-    margin-bottom: 0.4rem;
-  }
-
-  .paper-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.5rem;
-  }
-
-  .paper-status {
-    display: inline-block;
-    font-size: 0.68rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.16rem 0.5rem;
-    border-radius: 3px;
-  }
-
-  .status-published { background: #e8f5e9; color: #2e7d32; }
-  .status-accepted { background: #e8f5e9; color: #2e7d32; }
-  .status-review { background: #fff3e0; color: #e65100; }
-  .status-rr { background: #e3f2fd; color: #1565c0; }
-  .status-submitted { background: #f3e5f5; color: #7b1fa2; }
-  .status-wip { background: var(--bg-warm); color: var(--ink-muted); }
-
-  .paper-award {
-    display: inline-block;
-    font-size: 0.68rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.16rem 0.5rem;
-    border-radius: 3px;
-    background: #fff8e1;
-    color: #f57f17;
+    margin-bottom: 0.3rem;
   }
 
   .paper-venue {
     font-size: 0.82rem;
     font-style: italic;
     color: var(--ink-muted);
+    margin-bottom: 0.3rem;
   }
 
-  .paper-abstract {
-    font-size: 0.87rem;
-    color: var(--ink-light);
-    line-height: 1.65;
-    margin-top: 0.2rem;
-    margin-bottom: 0.5rem;
-    padding-left: 0.9rem;
-    border-left: 2px solid var(--rule);
-    display: none;
+  /* ── Abstract row (toggle + status) ─────── */
+  .abstract-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
   }
-
-  .paper-abstract.open { display: block; }
 
   .abstract-toggle {
     font-size: 0.8rem;
@@ -186,14 +148,13 @@
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    margin-top: 0.5rem;
   }
 
   .abstract-toggle:hover { color: var(--ink); }
 
   .abstract-toggle .chevron {
     display: inline-block;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     transition: transform 0.2s;
   }
 
@@ -201,11 +162,37 @@
     transform: rotate(90deg);
   }
 
+  .paper-status {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.16rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .status-accepted { background: #e8f5e9; color: #2e7d32; }
+  .status-review { background: #fff3e0; color: #e65100; }
+  .status-submitted { background: #f3e5f5; color: #7b1fa2; }
+  .status-wip { background: var(--bg-warm); color: var(--ink-muted); }
+
+  .paper-abstract {
+    font-size: 0.87rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-top: 0.4rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--rule);
+    display: none;
+  }
+
+  .paper-abstract.open { display: block; }
+
   .paper-links {
-    margin-top: 0.6rem;
+    margin-top: 0.5rem;
     display: flex;
     align-items: center;
-    gap: 0;
   }
 
   .paper-links a { font-size: 0.8rem; font-weight: 500; }
@@ -217,16 +204,18 @@
     margin-top: 0.3rem;
   }
 
-  /* ── WIP list ───────────────────────────── */
-  .wip-card {
-    background: var(--bg-card);
-    border-radius: 6px;
-    padding: 1.1rem 1.4rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
-    margin-bottom: 0.75rem;
+  /* ── WIP items ──────────────────────────── */
+  .wip-item {
+    padding: 0.2rem 0;
   }
 
-  .wip-card .paper-title { font-size: 0.98rem; }
+  .wip-item + .wip-item {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0ede8;
+  }
+
+  .wip-item .paper-title { font-size: 0.98rem; }
 
   /* ── Footer ─────────────────────────────── */
   footer {
@@ -243,7 +232,7 @@
     nav .nav-links a { font-size: 0.74rem; }
     .page { padding: 2rem 1.2rem 1rem; }
     footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .paper { padding: 1.2rem; }
+    .group-card { padding: 1.2rem 1.3rem; }
   }
 </style>
 </head>
@@ -264,111 +253,122 @@
 <div class="page">
 
   <h1>Research</h1>
+
   <!-- ═══ Publications ═══ -->
   <h2 class="section-heading">Publications</h2>
-
-  <div class="paper">
-    <div class="paper-title">The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany</div>
-    <div class="paper-authors">Giovanni Righetti</div>
-    <div class="paper-meta">
-      <span class="paper-venue">European Journal of Health Economics, forthcoming</span>
-    </div>
-    <button class="abstract-toggle" onclick="toggleAbstract('abs-amnog', this)"><span class="chevron">▶</span> Abstract</button>
-    <p class="paper-abstract" id="abs-amnog">
-      This paper evaluates the effect of Germany's 2011 AMNOG reform — which introduced mandatory health technology assessment for newly launched drugs — on pharmaceutical prices. Using a difference-in-differences approach, I find significant effects on the pricing of new pharmaceuticals in Germany, with implications for other countries that reference German prices.
-    </p>
-    <div class="paper-links">
-      <a href="http://dx.doi.org/10.2139/ssrn.4828807" target="_blank">SSRN</a>
-      <span class="sep">|</span>
-       <a href="https://www.linkedin.com/posts/italian-health-economics-association_aies2025-activity-7405015302750814208-tjIX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAClnEwgBfTN4OlM-PYrRYcrtoFaEDCcLkVM" target="_blank">AIES’s Young Researchers prize</a>
+  <div class="group-card">
+    <div class="paper-item">
+      <div class="paper-title">The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany</div>
+      <div class="paper-authors">Giovanni Righetti</div>
+      <div class="paper-venue">European Journal of Health Economics, forthcoming</div>
+      <div class="abstract-row">
+        <button class="abstract-toggle" onclick="toggleAbstract('abs-amnog', this)"><span class="chevron">▶</span> Abstract</button>
+      </div>
+      <p class="paper-abstract" id="abs-amnog">
+        This paper evaluates the effect of Germany's 2011 AMNOG reform — which introduced mandatory health technology assessment for newly launched drugs — on pharmaceutical prices. Using a difference-in-differences approach, I find significant effects on the pricing of new pharmaceuticals in Germany, with implications for other countries that reference German prices.
+      </p>
+      <div class="paper-links">
+        <a href="http://dx.doi.org/10.2139/ssrn.4828807" target="_blank">SSRN</a>
+        <span class="sep">|</span>
+        <a href="https://www.linkedin.com/posts/italian-health-economics-association_aies2025-activity-7405015302750814208-tjIX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAClnEwgBfTN4OlM-PYrRYcrtoFaEDCcLkVM" target="_blank">AIES's Young Researchers Prize</a>
+      </div>
     </div>
   </div>
 
-  <!-- ═══ Working Papers ═══ -->
+  <!-- ═══ Working Papers & Submitted Work ═══ -->
   <h2 class="section-heading">Working Papers &amp; Submitted Work</h2>
+  <div class="group-card">
 
-  <div class="paper">
-    <div class="paper-title">Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
-    <div class="paper-authors">with Simona Gamba and Paolo Pertile</div>
-    <div class="paper-meta">
-      <span class="paper-status status-review">Under Review</span>
+    <div class="paper-item">
+      <div class="paper-title">Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
+      <div class="paper-authors">with Simona Gamba and Paolo Pertile</div>
+      <div class="abstract-row">
+        <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)"><span class="chevron">▶</span> Abstract</button>
+        <span class="paper-status status-review">Under Review</span>
+      </div>
+      <p class="paper-abstract" id="abs-erp">
+        Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
+      </p>
+      <div class="paper-links">
+        <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
+      </div>
     </div>
-    <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)"><span class="chevron">▶</span> Abstract</button>
-    <p class="paper-abstract" id="abs-erp">
-      Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
-    </p>
-    <div class="paper-links">
-      <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
+
+    <div class="paper-item">
+      <div class="paper-title">On the Long-Term Effect of Most Favored Nation Drug Pricing</div>
+      <div class="paper-authors">with Pedro Pita Barros and Leonor Sá</div>
+      <div class="abstract-row">
+        <span class="paper-status status-submitted">Submitted</span>
+      </div>
+      <div class="paper-links">
+        <a href="http://dx.doi.org/10.2139/ssrn.6373278" target="_blank">SSRN</a>
+      </div>
     </div>
+
+    <div class="paper-item">
+      <div class="paper-title">Pricing Mechanisms for Multi-Indication Drugs</div>
+      <div class="paper-authors">with Pedro Pita Barros and Leonor Sá</div>
+      <div class="abstract-row">
+        <button class="abstract-toggle" onclick="toggleAbstract('abs-multi', this)"><span class="chevron">▶</span> Abstract</button>
+        <span class="paper-status status-wip">Working Paper</span>
+      </div>
+      <p class="paper-abstract" id="abs-multi">
+        We study optimal pricing mechanisms when a single drug treats multiple medical conditions with different clinical benefits. We compare uniform pricing with indication-based pricing, analysing how each mechanism affects access, firm incentives, and overall welfare.
+      </p>
+      <div class="paper-links">
+        <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">SSRN</a>
+      </div>
+      <div class="paper-media">Media coverage: Netfarma</div>
+    </div>
+
   </div>
 
-  <div class="paper">
-    <div class="paper-title">On the Long-Term Effect of Most Favored Nation Drug Pricing</div>
-    <div class="paper-authors">with Pedro Pita Barros and Leonor Sá</div>
-    <div class="paper-meta">
-      <span class="paper-status status-submitted">Submitted</span>
-    </div>
-    <div class="paper-links">
-      <a href="http://dx.doi.org/10.2139/ssrn.6373278" target="_blank">SSRN</a>
-    </div>
-  </div>
-
-  <div class="paper">
-    <div class="paper-title">Pricing Mechanisms for Multi-Indication Drugs</div>
-    <div class="paper-authors">with Pedro Pita Barros and Leonor Sá</div>
-    <div class="paper-meta">
-      <span class="paper-status status-wip">Working Paper</span>
-    </div>
-    <button class="abstract-toggle" onclick="toggleAbstract('abs-multi', this)"><span class="chevron">▶</span> Abstract</button>
-    <p class="paper-abstract" id="abs-multi">
-      We study optimal pricing mechanisms when a single drug treats multiple medical conditions with different clinical benefits. We compare uniform pricing with indication-based pricing, analysing how each mechanism affects access, firm incentives, and overall welfare.
-    </p>
-    <div class="paper-links">
-      <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">SSRN</a>
-    </div>
-    <div class="paper-media">Media coverage: Netfarma</div>
-  </div>
-
-  <!-- ═══ Policy Outputs ═══ -->
+  <!-- ═══ Policy Work ═══ -->
   <h2 class="section-heading">Policy Work</h2>
+  <div class="group-card">
 
-  <div class="paper">
-    <div class="paper-title">Regulação Farmacêutica em Contexto Internacional: Implicações para o SNS</div>
-    <div class="paper-authors">Nova SBE, Social Equity Initiative — Health Economics Chair (2026)</div>
-    <div class="paper-media">Media coverage: Correio da Manhã, Rádio Renascença, Jornal Económico</div>
-  </div>
+    <div class="paper-item">
+      <div class="paper-title">Regulação Farmacêutica em Contexto Internacional: Implicações para o SNS</div>
+      <div class="paper-authors">Nova SBE, Social Equity Initiative — Health Economics Chair (2026)</div>
+      <div class="paper-media">Media coverage: Correio da Manhã, Rádio Renascença, Jornal Económico</div>
+    </div>
 
-  <div class="paper">
-    <div class="paper-title">Most Favored Nation Drug Pricing: Anchoring to a Moving Target</div>
-    <div class="paper-authors">with Pedro Pita Barros and Leonor Sá — Submitted to Health Affairs Forefront (2026)</div>
+    <div class="paper-item">
+      <div class="paper-title">Most Favored Nation Drug Pricing: Anchoring to a Moving Target</div>
+      <div class="paper-authors">with Pedro Pita Barros and Leonor Sá — Submitted to Health Affairs Forefront (2026)</div>
+    </div>
+
   </div>
 
   <!-- ═══ Work in Progress ═══ -->
   <h2 class="section-heading">Work in Progress</h2>
+  <div class="group-card">
 
-  <div class="wip-card">
-    <div class="paper-title">Escaping the ERP Trap</div>
-    <div class="paper-authors">with Paolo Pertile</div>
-  </div>
+    <div class="wip-item">
+      <div class="paper-title">Escaping the ERP Trap</div>
+      <div class="paper-authors">with Paolo Pertile</div>
+    </div>
 
-  <div class="wip-card">
-    <div class="paper-title">Mind the Gap: Toward an Equity-Conscious Pricing System for Multi-Indication Drugs</div>
-    <div class="paper-authors">with P.P. Barros, B. Haon, L. Rochaix, and L. Sá</div>
-  </div>
+    <div class="wip-item">
+      <div class="paper-title">Mind the Gap: Toward an Equity-Conscious Pricing System for Multi-Indication Drugs</div>
+      <div class="paper-authors">with P.P. Barros, B. Haon, L. Rochaix, and L. Sá</div>
+    </div>
 
-  <div class="wip-card">
-    <div class="paper-title">The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Measured Therapeutic Benefit of Cancer Drugs</div>
-    <div class="paper-authors">with A. Gentilini, C. Santos, M. Miraldo, P.P. Barros, and L. Sá</div>
-  </div>
+    <div class="wip-item">
+      <div class="paper-title">The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Measured Therapeutic Benefit of Cancer Drugs</div>
+      <div class="paper-authors">with A. Gentilini, C. Santos, M. Miraldo, P.P. Barros, and L. Sá</div>
+    </div>
 
-  <div class="wip-card">
-    <div class="paper-title">Losing Control: Patient Organizations and Retention in Randomized Clinical Trials</div>
-    <div class="paper-authors">Solo-authored</div>
-  </div>
+    <div class="wip-item">
+      <div class="paper-title">Losing Control: Patient Organizations and Retention in Randomized Clinical Trials</div>
+      <div class="paper-authors">Solo-authored</div>
+    </div>
 
-  <div class="wip-card">
-    <div class="paper-title">The Price of Choice: How Private Hospital Access Shapes Out-of-Pocket Spending</div>
-    <div class="paper-authors">with P. Bertoli and C. Fertonani</div>
+    <div class="wip-item">
+      <div class="paper-title">The Price of Choice: How Private Hospital Access Shapes Out-of-Pocket Spending</div>
+      <div class="paper-authors">with P. Bertoli and C. Fertonani</div>
+    </div>
+
   </div>
 
 </div>
