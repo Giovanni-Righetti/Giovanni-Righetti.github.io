@@ -126,14 +126,12 @@
     font-weight: 400;
     letter-spacing: -0.025em;
     line-height: 1.15;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
   }
 
   .hero-subtitle {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--teal);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
     margin-bottom: 1rem;
   }
 
@@ -141,22 +139,6 @@
     font-size: 0.92rem;
     color: var(--ink-light);
     line-height: 1.72;
-  }
-
-  .hero-fields {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .field-tag {
-    font-size: 0.74rem;
-    font-weight: 500;
-    padding: 0.25rem 0.65rem;
-    border-radius: 20px;
-    background: var(--teal-soft);
-    color: var(--teal);
   }
 
   .hero-links {
@@ -177,27 +159,21 @@
 
   .hero-links a svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-  /* ── Featured research ──────────────────── */
-  .featured-section {
+  /* ── Main card (JMP + News) ─────────────── */
+  .main-card-section {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 1.5rem 2rem 0;
+    padding: 0 2rem;
   }
 
-  .featured-section h2 {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-  }
-
-  .featured-paper {
+  .main-card {
     background: var(--bg-card);
     border-radius: 6px;
-    padding: 1.5rem 1.8rem;
+    padding: 1.8rem 2rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
   }
 
+  /* ── Featured paper ─────────────────────── */
   .featured-label {
     font-size: 0.68rem;
     font-weight: 600;
@@ -207,57 +183,58 @@
     margin-bottom: 0.5rem;
   }
 
-  .featured-paper h3 {
+  .featured-title {
     font-family: var(--serif);
     font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.35;
-    margin-bottom: 0.2rem;
-  }
-
-  .featured-paper .authors { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 0.6rem; }
-
-  .featured-paper .abstract {
-    font-size: 0.88rem;
-    color: var(--ink-light);
-    line-height: 1.65;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.35rem;
   }
 
   .paper-status {
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding: 0.18rem 0.55rem;
+    padding: 0.16rem 0.5rem;
     border-radius: 3px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
   }
 
   .status-review { background: #fff3e0; color: #e65100; }
 
-  .featured-paper .links { margin-top: 0.6rem; }
-  .featured-paper .links a { font-size: 0.82rem; font-weight: 500; margin-right: 1rem; }
+  .featured-authors {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .featured-abstract {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-bottom: 0.6rem;
+  }
+
+  .featured-links { margin-top: 0.4rem; }
+  .featured-links a { font-size: 0.82rem; font-weight: 500; margin-right: 1rem; }
 
   .see-all-link {
     display: inline-block;
-    margin-top: 1rem;
-    font-size: 0.88rem;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 500;
   }
 
-  /* ── News ───────────────────────────────── */
-  .news-section {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 2rem 2rem 0;
-  }
-
-  .news-section h2 {
+  /* ── Section heading (outside card) ───── */
+  .section-label {
     font-family: var(--serif);
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     font-weight: 400;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.7rem;
   }
 
   .news-list {
@@ -266,10 +243,10 @@
   }
 
   .news-list li {
-    font-size: 0.88rem;
+    font-size: 0.87rem;
     color: var(--ink-light);
     line-height: 1.6;
-    padding: 0.4rem 0;
+    padding: 0.35rem 0;
     border-bottom: 1px solid rgba(0,0,0,0.04);
   }
 
@@ -300,7 +277,8 @@
     nav .nav-inner { padding: 0.8rem 1.2rem; }
     nav .nav-links { gap: 1rem; }
     nav .nav-links a { font-size: 0.74rem; }
-    header, .news-section, .featured-section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+    header, .main-card-section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .main-card { padding: 1.3rem 1.4rem; }
   }
 </style>
 </head>
@@ -329,7 +307,7 @@
         <p class="hero-bio">
           I study how pharmaceutical regulation and pricing policy shape market outcomes across countries. My work combines theoretical models with causal empirical methods, at the intersection of health economics and industrial organization. I am part of the <a href="https://hiprixhorizon.eu/" target="_blank">HI-PRIX</a> Horizon Europe project, supervised by <a href="https://www.novasbe.unl.pt/en/faculty-research/faculty/faculty-detail/id/13/pedro-pita-barros" target="_blank">Pedro Pita Barros</a>. I received my Ph.D. from the University of Verona in 2024.
         </p>
-          <div class="hero-links">
+        <div class="hero-links">
           <a href="mailto:giovanni.righetti@novasbe.pt">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 8 10-8"/></svg>
             Email
@@ -352,26 +330,34 @@
   </div>
 </header>
 
-<div class="featured-section">
-  <h2>Job Market Paper</h2>
-  <div class="featured-paper">
-    <h3>Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation <span class="paper-status status-review">Under Review</span></h3>
-    <div class="authors">with Simona Gamba and Paolo Pertile</div>
-  
-    <p class="abstract">
+<div class="main-card-section">
+  <h2 class="section-label">Job Market Paper</h2>
+  <div class="main-card">
+    <div class="featured-title">
+      Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation
+      <span class="paper-status status-review">Under Review</span>
+    </div>
+    <div class="featured-authors">with Simona Gamba and Paolo Pertile</div>
+    <p class="featured-abstract">
       Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
     </p>
-    <div class="links">
-      <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN →</a>
+    <div class="featured-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
+      <!-- Replace with your actual slides link -->
+      <a href="https://drive.google.com/file/d/YOUR_SLIDES_ID/view" target="_blank">Slides</a>
     </div>
+  </div>
+</div>
 
-<div class="news-section">
-  <h2>News</h2>
-  <ul class="news-list">
-    <li><span class="news-date">Apr 2026</span> — "The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" accepted at the <em>European Journal of Health Economics</em>.</li>
-    <li><span class="news-date">Jun 2026</span> — Presenting at the X American-European Health Economics Study Group, Hertie School, Berlin.</li>
-    <li><span class="news-date">Jul 2026</span> — Two papers at EuHEA 2026 in Rotterdam.</li>
-  </ul>
+<div class="main-card-section" style="padding-top: 1.8rem;">
+  <h2 class="section-label">News</h2>
+  <div class="main-card">
+    <ul class="news-list">
+      <li><span class="news-date">Apr 2026</span> — "The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" accepted at the <em>European Journal of Health Economics</em>.</li>
+      <li><span class="news-date">Jun 2026</span> — Presenting at the X American-European Health Economics Study Group, Hertie School, Berlin.</li>
+      <li><span class="news-date">Jul 2026</span> — Two papers at EuHEA 2026 in Rotterdam.</li>
+    </ul>
+  </div>
 </div>
 
 <footer>
