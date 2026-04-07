@@ -58,25 +58,7 @@
   nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
   nav .nav-links a.active { color: var(--accent); }
 
-  /* ── Single page card ───────────────────── */
-  .page-card {
-    max-width: var(--max-w);
-    margin: 1.5rem auto;
-    background: var(--bg-card);
-    border-radius: 10px;
-    padding: 3rem 3rem 2.5rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
-    min-height: calc(100vh - 5rem);
-  }
-
-  .page-card h1 {
-    font-family: var(--serif);
-    font-size: 2.4rem;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 2rem;
-  }
-
+  /* ── Page title (on background) ─────────── */
   .page-title {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -85,6 +67,17 @@
     font-size: 2.4rem;
     font-weight: 400;
     letter-spacing: -0.02em;
+  }
+
+  /* ── Single page card ───────────────────── */
+  .page-card {
+    max-width: var(--max-w);
+    margin: 0 auto 1.5rem;
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 3rem 3rem 2.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+    min-height: calc(100vh - 8rem);
   }
 
   /* ── Section divider ────────────────────── */
@@ -172,14 +165,11 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding: 0.18rem 0.55rem;
-    border-radius: 3px;
+    padding: 0;
   }
 
-  .status-accepted { background: #e8f5e9; color: #2e7d32; }
-  .status-review { background: none; color: #e65100; padding: 0; }
-  .status-submitted { background: none; color: #e65100; padding: 0; }
-  .status-wip { background: var(--bg-warm); color: var(--ink-muted); }
+  .status-review { background: none; color: #e65100; }
+  .status-submitted { background: none; color: #e65100; }
 
   .paper-abstract {
     font-size: 0.95rem;
@@ -197,6 +187,7 @@
     margin-top: 0.6rem;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .paper-links a { font-size: 0.88rem; font-weight: 500; }
@@ -235,6 +226,7 @@
   @media (max-width: 700px) {
     html { font-size: 16px; }
     .page-card { margin: 0; border-radius: 0; padding: 2rem 1.5rem; min-height: auto; }
+    .page-title { padding: 1.5rem 1.5rem 0.5rem; }
     nav .nav-inner { padding: 0.8rem 1.2rem; }
     nav .nav-links { gap: 1rem; }
     nav .nav-links a { font-size: 0.74rem; }
@@ -326,9 +318,9 @@
     <div class="paper-links">
       <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">SSRN</a>
       <span class="sep">|</span>
-      <a href="slides_jmp.pdf" target="_blank">Slides</a>
+      <a href="HI_PRIX_WP4__indication_based_pricing (49).pdf" target="_blank">Slides</a>
       <span class="sep">|</span>
-      <a href="slides_jmp.pdf" target="_blank">Poster</a>
+      <a href="Poster_efficiency.pdf" target="_blank">Poster</a>
       <span class="sep">|</span>
       <a href="slides_jmp.pdf" target="_blank">Netfarma</a>
     </div>
@@ -340,27 +332,32 @@
   <div class="paper-item">
     <div class="paper-title">Regulação Farmacêutica em Contexto Internacional: Implicações para o SNS</div>
     <div class="paper-authors">Giovanni Righetti</div>
-    <div class="paper-venue">Nova SBE, Social Equity Initiative — Health Economics Chair (2026)</div>
+    <div class="paper-venue">Nova SBE, Social Equity Initiative. Health Economics Chair (2026)</div>
     <div class="paper-links">
-      <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">Correio da Manhã</a>
+      <a href="https://www.novasbe.unl.pt/Portals/0/Files/Social%20Equity%20Initiative/2026/11_Regulacao_Farmaceutica_em_Contexto_Internacional_Implica.pdf" target="_blank">PDF</a>
       <span class="sep">|</span>
-      <a href="slides_jmp.pdf" target="_blank">Rádio Renascença</a>
+      <a href="https://www.cmjornal.pt/sociedade/detalhe/portugal-deve-diversificar-instrumentos-de-definicao-dos-precos-dos-medicamentos" target="_blank">Correio da Manhã</a>
       <span class="sep">|</span>
-      <a href="slides_jmp.pdf" target="_blank">Jornal Económico</a>
+      <a href="https://rr.pt/noticia/pais/2026/02/19/portugal-deve-diversificar-instrumentos-de-definicao-dos-precos-dos-medicamentos-diz-estudo/460052/.pdf" target="_blank">Rádio Renascença</a>
+      <span class="sep">|</span>
+      <a href="https://jornaleconomico.sapo.pt/noticias/interdependencias-entre-paises-condicionam-precos-e-acesso-a-medicamentos-em-portugal/" target="_blank">Jornal Económico</a>
+      <span class="sep">|</span>
+      <a href="https://sapo.pt/artigo/portugal-deve-diversificar-instrumentos-de-definicao-dos-precos-dos-medicamentos-estudo-6996ebf74c6a0667186e4545" target="_blank">Sapo</a>
     </div>
   </div>
 
   <div class="paper-item">
     <div class="paper-title">Most Favored Nation Drug Pricing: Anchoring to a Moving Target</div>
-    <div class="paper-authors">with Pedro Pita Barros and Luís Sá — Submitted to Health Affairs Forefront (2026)</div>
+    <div class="paper-authors">with Pedro Pita Barros and Luís Sá</div>
+    <span class="paper-status status-submitted">Submitted</span>
   </div>
 
   <!-- ═══ Work in Progress ═══ -->
   <h2 class="section-divider">Work in Progress</h2>
 
   <div class="wip-item">
-    <div class="paper-title">Escaping the ERP Trap</div>
-    <div class="paper-authors">with Paolo Pertile</div>
+    <div class="paper-title">Escaping the External Reference Pricing Trap</div>
+    <div class="paper-authors">with P. Pertile</div>
     <div class="paper-media">Presented at: SIEP, PET, EuHEA PhD, EHEW, University of Verona</div>
   </div>
 
@@ -378,7 +375,6 @@
 
   <div class="wip-item">
     <div class="paper-title">Losing Control: Patient Organizations and Retention in Randomized Clinical Trials</div>
-    <div class="paper-authors">Solo-authored</div>
     <div class="paper-media">Presented at: University of Verona, NHEM seminar</div>
   </div>
 
