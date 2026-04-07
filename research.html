@@ -21,7 +21,7 @@
     --rule: #d4cfc6;
     --serif: 'Newsreader', Georgia, serif;
     --sans: 'DM Sans', -apple-system, sans-serif;
-    --max-w: 1150px;
+    --max-w: 1320px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -77,13 +77,23 @@
     margin-bottom: 2rem;
   }
 
+  .page-title {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 2rem 3rem 0.8rem;
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
   /* ── Section divider ────────────────────── */
   .section-divider {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: 1.85rem;
     font-weight: 400;
-    padding-bottom: 0.55rem;
-    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.6rem;
+    border-bottom: 2.5px solid var(--rule);
     margin-bottom: 1.5rem;
     margin-top: 3rem;
   }
@@ -245,9 +255,9 @@
   </div>
 </nav>
 
-<div class="page-card">
+<h1 class="page-title">Research</h1>
 
-  <h1>Research</h1>
+<div class="page-card">
 
   <!-- ═══ Publications ═══ -->
   <h2 class="section-divider">Publications</h2>
