@@ -21,18 +21,17 @@
     --rule: #d4cfc6;
     --serif: 'Newsreader', Georgia, serif;
     --sans: 'DM Sans', -apple-system, sans-serif;
-    --max-w: 920px;
+    --max-w: 1150px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { font-size: 17px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  html { font-size: 18px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
   body {
     font-family: var(--sans);
     color: var(--ink);
     background: var(--bg);
-    line-height: 1.65;
-    min-height: 100vh;
+    line-height: 1.7;
   }
 
   a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
@@ -41,17 +40,17 @@
   /* ── Nav ─────────────────────────────────── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(245,241,235,0.92);
+    background: rgba(245,241,235,0.95);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--rule);
   }
   nav .nav-inner {
-    max-width: var(--max-w); margin: 0 auto; padding: 0.85rem 2rem;
+    max-width: var(--max-w); margin: 0 auto; padding: 0.9rem 2.5rem;
     display: flex; justify-content: space-between; align-items: baseline;
   }
-  nav .nav-name { font-family: var(--serif); font-weight: 500; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+  nav .nav-name { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
   nav .nav-name:hover { text-decoration: none; color: var(--accent); }
-  nav .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  nav .nav-links { display: flex; gap: 2rem; list-style: none; }
   nav .nav-links a {
     font-size: 0.82rem; font-weight: 500; color: var(--ink-muted);
     text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em;
@@ -59,76 +58,71 @@
   nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
   nav .nav-links a.active { color: var(--accent); }
 
-  /* ── Page ────────────────────────────────── */
-  .page {
+  /* ── Single page card ───────────────────── */
+  .page-card {
     max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 2.5rem 2rem 1rem;
+    margin: 1.5rem auto;
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 3rem 3rem 2.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+    min-height: calc(100vh - 5rem);
   }
 
-  .page h1 {
+  .page-card h1 {
     font-family: var(--serif);
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 400;
     letter-spacing: -0.02em;
     margin-bottom: 2rem;
   }
 
-  /* ── Section heading (outside card) ─────── */
-  .section-heading {
+  /* ── Section divider ────────────────────── */
+  .section-divider {
     font-family: var(--serif);
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     font-weight: 400;
-    color: var(--ink);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.55rem;
     border-bottom: 1px solid var(--rule);
-    margin-bottom: 1.3rem;
-    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
   }
 
-  .section-heading:first-of-type { margin-top: 0; }
+  .section-divider:first-of-type { margin-top: 0; }
 
-  /* ── Grouped card ───────────────────────── */
-  .group-card {
-    background: var(--bg-card);
-    border-radius: 6px;
-    padding: 1.6rem 1.8rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
-  }
-
-  /* ── Paper item inside card ─────────────── */
+  /* ── Paper item ─────────────────────────── */
   .paper-item {
     padding: 0.2rem 0;
   }
 
   .paper-item + .paper-item {
-    margin-top: 1.3rem;
-    padding-top: 1.3rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
     border-top: 1px solid #f0ede8;
   }
 
   .paper-title {
     font-family: var(--serif);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.4;
     margin-bottom: 0.15rem;
   }
 
   .paper-authors {
-    font-size: 0.84rem;
+    font-size: 0.92rem;
     color: var(--ink-muted);
     margin-bottom: 0.3rem;
   }
 
   .paper-venue {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-style: italic;
     color: var(--ink-muted);
     margin-bottom: 0.3rem;
   }
 
-  /* ── Abstract row (toggle + status) ─────── */
+  /* ── Abstract row ───────────────────────── */
   .abstract-row {
     display: flex;
     align-items: center;
@@ -137,7 +131,7 @@
   }
 
   .abstract-toggle {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--ink-muted);
     background: none;
@@ -164,11 +158,11 @@
 
   .paper-status {
     display: inline-block;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding: 0.16rem 0.5rem;
+    padding: 0.18rem 0.55rem;
     border-radius: 3px;
   }
 
@@ -178,11 +172,11 @@
   .status-wip { background: var(--bg-warm); color: var(--ink-muted); }
 
   .paper-abstract {
-    font-size: 0.87rem;
+    font-size: 0.95rem;
     color: var(--ink-light);
-    line-height: 1.65;
-    margin-top: 0.4rem;
-    padding-left: 0.9rem;
+    line-height: 1.7;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
     border-left: 2px solid var(--rule);
     display: none;
   }
@@ -190,16 +184,16 @@
   .paper-abstract.open { display: block; }
 
   .paper-links {
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
     display: flex;
     align-items: center;
   }
 
-  .paper-links a { font-size: 0.8rem; font-weight: 500; }
-  .paper-links .sep { color: var(--rule); margin: 0 0.5rem; font-weight: 400; font-size: 0.8rem; }
+  .paper-links a { font-size: 0.88rem; font-weight: 500; }
+  .paper-links .sep { color: var(--rule); margin: 0 0.55rem; font-weight: 400; }
 
   .paper-media {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--ink-muted);
     margin-top: 0.3rem;
   }
@@ -210,29 +204,30 @@
   }
 
   .wip-item + .wip-item {
-    margin-top: 1rem;
-    padding-top: 1rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
     border-top: 1px solid #f0ede8;
   }
 
-  .wip-item .paper-title { font-size: 0.98rem; }
+  .wip-item .paper-title { font-size: 1.05rem; }
 
   /* ── Footer ─────────────────────────────── */
   footer {
-    max-width: var(--max-w); margin: 0 auto;
-    padding: 3rem 2rem 2.5rem; text-align: center;
-    font-size: 0.82rem; color: var(--ink-muted);
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
   }
 
   /* ── Responsive ─────────────────────────── */
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     html { font-size: 16px; }
+    .page-card { margin: 0; border-radius: 0; padding: 2rem 1.5rem; min-height: auto; }
     nav .nav-inner { padding: 0.8rem 1.2rem; }
     nav .nav-links { gap: 1rem; }
     nav .nav-links a { font-size: 0.74rem; }
-    .page { padding: 2rem 1.2rem 1rem; }
-    footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .group-card { padding: 1.2rem 1.3rem; }
   }
 </style>
 </head>
@@ -250,147 +245,136 @@
   </div>
 </nav>
 
-<div class="page">
+<div class="page-card">
 
   <h1>Research</h1>
 
   <!-- ═══ Publications ═══ -->
-  <h2 class="section-heading">Publications</h2>
-  <div class="group-card">
-    <div class="paper-item">
-      <div class="paper-title">The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany</div>
-      <div class="paper-authors">Giovanni Righetti</div>
-      <div class="paper-venue">European Journal of Health Economics, forthcoming</div>
-      <div class="abstract-row">
-        <button class="abstract-toggle" onclick="toggleAbstract('abs-amnog', this)"><span class="chevron">▶</span> Abstract</button>
-      </div>
-      <p class="paper-abstract" id="abs-amnog">
-In years of growing pharmaceutical spending, the provision of innovative medicines faces stricter budgetary constraints. The response in the European Union (EU) has been to rely on health technology assessment (HTA) in order to align the cost of new innovative treatments with their added therapeutic benefits. I analyze the impact of the AMNOG reform in Germany in 2011 on pharmaceutical prices. The bill introduced a mandatory price negotiation process based, among other criteria, on the added therapeutic value of the new medicine. I employed a triple difference analysis, exploiting the IMS pricing database of 85 anticancer drugs launched between 2007 and 2017 in 24 OECD countries. I confirm the success of the AMNOG reform: the negotiation process introduced in 2011 has successfully reduced drug prices by 16.4%.      </p>
-      <div class="paper-links">
-        <a href="http://dx.doi.org/10.2139/ssrn.4828807" target="_blank">SSRN</a>
-        <span class="sep">|</span>
-        <a href="https://www.linkedin.com/posts/italian-health-economics-association_aies2025-activity-7405015302750814208-tjIX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAClnEwgBfTN4OlM-PYrRYcrtoFaEDCcLkVM" target="_blank">AIES's Young Researchers Prize</a>
-      </div>
+  <h2 class="section-divider">Publications</h2>
+
+  <div class="paper-item">
+    <div class="paper-title">The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany</div>
+    <div class="paper-authors">Giovanni Righetti</div>
+    <div class="paper-venue">European Journal of Health Economics, forthcoming</div>
+    <div class="abstract-row">
+      <button class="abstract-toggle" onclick="toggleAbstract('abs-amnog', this)"><span class="chevron">▶</span> Abstract</button>
+    </div>
+    <p class="paper-abstract" id="abs-amnog">
+      In years of growing pharmaceutical spending, the provision of innovative medicines faces stricter budgetary constraints. The response in the European Union (EU) has been to rely on health technology assessment (HTA) in order to align the cost of new innovative treatments with their added therapeutic benefits. I analyze the impact of the AMNOG reform in Germany in 2011 on pharmaceutical prices. The bill introduced a mandatory price negotiation process based, among other criteria, on the added therapeutic value of the new medicine. I employed a triple difference analysis, exploiting the IMS pricing database of 85 anticancer drugs launched between 2007 and 2017 in 24 OECD countries. I confirm the success of the AMNOG reform: the negotiation process introduced in 2011 has successfully reduced drug prices by 16.4%.
+    </p>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.4828807" target="_blank">SSRN</a>
+      <span class="sep">|</span>
+      <a href="https://www.linkedin.com/posts/italian-health-economics-association_aies2025-activity-7405015302750814208-tjIX?utm_source=share&utm_medium=member_desktop&rcm=ACoAAClnEwgBfTN4OlM-PYrRYcrtoFaEDCcLkVM" target="_blank">AIES's Young Researchers Prize</a>
     </div>
   </div>
 
   <!-- ═══ Working Papers & Submitted Work ═══ -->
-  <h2 class="section-heading">Working Papers &amp; Submitted Work</h2>
-  <div class="group-card">
+  <h2 class="section-divider">Working Papers &amp; Submitted Work</h2>
 
-    <div class="paper-item">
-      <div class="paper-title">Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
-      <div class="paper-authors">with Simona Gamba and Paolo Pertile</div>
-      <div class="abstract-row">
-        <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)"><span class="chevron">▶</span> Abstract</button>
-        <span class="paper-status status-review">Under Review</span>
-      </div>
-      <p class="paper-abstract" id="abs-erp">
-        Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
-      </p>
-      <div class="paper-links">
-        <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
-        <span class="sep">|</span>
-        <a href="slides_jmp.pdf" target="_blank">Slides</a>
-      </div>
+  <div class="paper-item">
+    <div class="paper-title">Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
+    <div class="paper-authors">with Simona Gamba and Paolo Pertile</div>
+    <div class="abstract-row">
+      <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)"><span class="chevron">▶</span> Abstract</button>
+      <span class="paper-status status-review">Under Review</span>
     </div>
-
-    <div class="paper-item">
-      <div class="paper-title">On the Long-Term Effect of Most Favored Nation Drug Pricing</div>
-      <div class="paper-authors">with Pedro Pita Barros and Luís Sá</div>
-      <div class="abstract-row">
-         <button class="abstract-toggle" onclick="toggleAbstract('abs-mfn', this)"><span class="chevron">▶</span> Abstract</button>
-        <span class="paper-status status-review">Submitted</span>
-      </div>
-      <p class="paper-abstract" id="abs-mfn">
-"Most Favored Nation" drug pricing restricts patient access in reference countries even when patients face no out-of-pocket costs. We show that manufacturers narrow covered patient populations to raise measured therapeutic benefit and the benchmark price, operating through coverage determination rather than cost-sharing. Calibrating to U.S.-OECD price differentials, MFN pricing yields 7.1% higher global therapeutic benefit but 17.8% lower manufacturer revenue. If the reference country renegotiates its pricing rule, both therapeutic benefit and revenue increase-but the reference country's health plan bears most of the cost.      </p>
-      <div class="paper-links">
-        <a href="http://dx.doi.org/10.2139/ssrn.6373278" target="_blank">SSRN</a>
-      </div>
+    <p class="paper-abstract" id="abs-erp">
+      Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
+    </p>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
+      <span class="sep">|</span>
+      <a href="slides_jmp.pdf" target="_blank">Slides</a>
     </div>
-
-    <div class="paper-item">
-      <div class="paper-title">Pricing Mechanisms for Multi-Indication Drugs</div>
-      <div class="paper-authors">with Pedro Pita Barros and Luís Sá</div>
-      <div class="abstract-row">
-        <button class="abstract-toggle" onclick="toggleAbstract('abs-multi', this)"><span class="chevron">▶</span> Abstract</button>
-      </div>
-      <p class="paper-abstract" id="abs-multi">
-Multi-indication drugs pose pricing challenges, affecting therapeutic benefits and access. We model how a manufacturer strategically chooses clinically eligible patient populations for each indication during R&D, recognizing that broader populations increase demand but reduce expected therapeutic benefits and maximum prices. We identify mechanisms that induce the manufacturer to maximize total therapeutic benefit: indication-specific prices equal to expected benefits, population-weighted uniform prices, and two-part tariffs. These mechanisms emerge endogenously from Nash bargaining, preventing full surplus extraction by the manufacturer. When indications are introduced sequentially with unconstrained price adjustments, benefit maximization persists; however, price caps distort patient selection, explaining empirically observed indication launch strategies.      </p>
-      <div class="paper-links">
-        <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">SSRN</a>
-         <span class="sep">|</span>
-        <a href="HI_PRIX_WP4__indication_based_pricing (49).pdf" target="_blank">Slides</a>
-         <span class="sep">|</span>
-        <a href="Poster_efficiency.pdf" target="_blank">Poster</a>
-        <span class="sep">|</span>
-        <a href="slides_jmp.pdf" target="_blank">Netfarma</a>
-      </div>
-
   </div>
+
+  <div class="paper-item">
+    <div class="paper-title">On the Long-Term Effect of Most Favored Nation Drug Pricing</div>
+    <div class="paper-authors">with Pedro Pita Barros and Luís Sá</div>
+    <div class="abstract-row">
+      <button class="abstract-toggle" onclick="toggleAbstract('abs-mfn', this)"><span class="chevron">▶</span> Abstract</button>
+      <span class="paper-status status-submitted">Submitted</span>
+    </div>
+    <p class="paper-abstract" id="abs-mfn">
+      "Most Favored Nation" drug pricing restricts patient access in reference countries even when patients face no out-of-pocket costs. We show that manufacturers narrow covered patient populations to raise measured therapeutic benefit and the benchmark price, operating through coverage determination rather than cost-sharing. Calibrating to U.S.-OECD price differentials, MFN pricing yields 7.1% higher global therapeutic benefit but 17.8% lower manufacturer revenue. If the reference country renegotiates its pricing rule, both therapeutic benefit and revenue increase — but the reference country's health plan bears most of the cost.
+    </p>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.6373278" target="_blank">SSRN</a>
+    </div>
+  </div>
+
+  <div class="paper-item">
+    <div class="paper-title">Pricing Mechanisms for Multi-Indication Drugs</div>
+    <div class="paper-authors">with Pedro Pita Barros and Luís Sá</div>
+    <div class="abstract-row">
+      <button class="abstract-toggle" onclick="toggleAbstract('abs-multi', this)"><span class="chevron">▶</span> Abstract</button>
+    </div>
+    <p class="paper-abstract" id="abs-multi">
+      Multi-indication drugs pose pricing challenges, affecting therapeutic benefits and access. We model how a manufacturer strategically chooses clinically eligible patient populations for each indication during R&amp;D, recognizing that broader populations increase demand but reduce expected therapeutic benefits and maximum prices. We identify mechanisms that induce the manufacturer to maximize total therapeutic benefit: indication-specific prices equal to expected benefits, population-weighted uniform prices, and two-part tariffs. These mechanisms emerge endogenously from Nash bargaining, preventing full surplus extraction by the manufacturer. When indications are introduced sequentially with unconstrained price adjustments, benefit maximization persists; however, price caps distort patient selection, explaining empirically observed indication launch strategies.
+    </p>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">SSRN</a>
+      <span class="sep">|</span>
+      <a href="slides_jmp.pdf" target="_blank">Slides</a>
+      <span class="sep">|</span>
+      <a href="slides_jmp.pdf" target="_blank">Poster</a>
+      <span class="sep">|</span>
+      <a href="slides_jmp.pdf" target="_blank">Netfarma</a>
+    </div>
   </div>
 
   <!-- ═══ Policy Work ═══ -->
-  <h2 class="section-heading">Policy Work</h2>
-  <div class="group-card">
+  <h2 class="section-divider">Policy Work</h2>
 
-    <div class="paper-item">
-      <div class="paper-title">Regulação Farmacêutica em Contexto Internacional: Implicações para o SNS</div>
-        <div class="paper-authors">Giovanni Righetti</div>
-      <div class="paper-venue">Nova SBE, Social Equity Initiative. Health Economics Chair (2026)</div>
-       <div class="paper-links">
-         <a href="https://www.novasbe.unl.pt/Portals/0/Files/Social%20Equity%20Initiative/2026/11_Regulacao_Farmaceutica_em_Contexto_Internacional_Implica.pdf" target="_blank">PDF</a>
-         <span class="sep">|</span>
-        <a href="https://www.cmjornal.pt/sociedade/detalhe/portugal-deve-diversificar-instrumentos-de-definicao-dos-precos-dos-medicamentos" target="_blank">Correio da Manhã</a>
-         <span class="sep">|</span>
-        <a href="https://rr.pt/noticia/pais/2026/02/19/portugal-deve-diversificar-instrumentos-de-definicao-dos-precos-dos-medicamentos-diz-estudo/460052/.pdf" target="_blank">Rádio Renascença</a>
-         <span class="sep">|</span>
-        <a href="https://jornaleconomico.sapo.pt/noticias/interdependencias-entre-paises-condicionam-precos-e-acesso-a-medicamentos-em-portugal/" target="_blank">Jornal Económico</a>
-          <span class="sep">|</span>
-        <a href="https://sapo.pt/artigo/portugal-deve-diversificar-instrumentos-de-definicao-dos-precos-dos-medicamentos-estudo-6996ebf74c6a0667186e4545" target="_blank">Sapo</a>
-      </div>
+  <div class="paper-item">
+    <div class="paper-title">Regulação Farmacêutica em Contexto Internacional: Implicações para o SNS</div>
+    <div class="paper-authors">Giovanni Righetti</div>
+    <div class="paper-venue">Nova SBE, Social Equity Initiative — Health Economics Chair (2026)</div>
+    <div class="paper-links">
+      <a href="http://dx.doi.org/10.2139/ssrn.5374679" target="_blank">Correio da Manhã</a>
+      <span class="sep">|</span>
+      <a href="slides_jmp.pdf" target="_blank">Rádio Renascença</a>
+      <span class="sep">|</span>
+      <a href="slides_jmp.pdf" target="_blank">Jornal Económico</a>
     </div>
+  </div>
 
-    <div class="paper-item">
-      <div class="paper-title">Most Favored Nation Drug Pricing: Anchoring to a Moving Target</div>
-      <div class="paper-authors">with Pedro Pita Barros and Luís Sá</div>
-       <span class="paper-status status-review">Submitted</span>
-    </div>
-
+  <div class="paper-item">
+    <div class="paper-title">Most Favored Nation Drug Pricing: Anchoring to a Moving Target</div>
+    <div class="paper-authors">with Pedro Pita Barros and Luís Sá — Submitted to Health Affairs Forefront (2026)</div>
   </div>
 
   <!-- ═══ Work in Progress ═══ -->
-  <h2 class="section-heading">Work in Progress</h2>
-  <div class="group-card">
+  <h2 class="section-divider">Work in Progress</h2>
 
-    <div class="wip-item">
-      <div class="paper-title">Escaping the External Reference Pricing Trap</div>
-      <div class="paper-authors">with P. Pertile</div>
-        <div class="paper-media">Presented at: SIEP, PET, EuHEA PhD, EHEW, University of Verona</div>
-    </div>
+  <div class="wip-item">
+    <div class="paper-title">Escaping the ERP Trap</div>
+    <div class="paper-authors">with Paolo Pertile</div>
+    <div class="paper-media">Presented at: SIEP, PET, EuHEA PhD, EHEW, University of Verona</div>
+  </div>
 
-    <div class="wip-item">
-      <div class="paper-title">Mind the Gap: Toward an Equity-Conscious Pricing System for Multi-Indication Drugs</div>
-      <div class="paper-authors">with P.P. Barros, B. Haon, L. Rochaix, and L. Sá</div>
-        <div class="paper-media">Presented at: APES CNES, NHEM seminar</div>
-    </div>
+  <div class="wip-item">
+    <div class="paper-title">Mind the Gap: Toward an Equity-Conscious Pricing System for Multi-Indication Drugs</div>
+    <div class="paper-authors">with P.P. Barros, B. Haon, L. Rochaix, and L. Sá</div>
+    <div class="paper-media">Presented at: APES CNES, NHEM seminar</div>
+  </div>
 
-    <div class="wip-item">
-      <div class="paper-title">The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Measured Therapeutic Benefit of Cancer Drugs</div>
-      <div class="paper-authors">with A. Gentilini, C. Santos, M. Miraldo, P.P. Barros, and L. Sá</div>
-        <div class="paper-media">Presented at: Hospinnomics, 1st Iberian Early-Career Research Meeting. Accepted at EuHEA and AEHESG</div>
-    </div>
+  <div class="wip-item">
+    <div class="paper-title">The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Measured Therapeutic Benefit of Cancer Drugs</div>
+    <div class="paper-authors">with A. Gentilini, C. Santos, M. Miraldo, P.P. Barros, and L. Sá</div>
+    <div class="paper-media">Presented at: Hospinnomics, 1st Iberian Early-Career Research Meeting. Accepted at EuHEA and AEHESG</div>
+  </div>
 
-    <div class="wip-item">
-      <div class="paper-title">Losing Control: Patient Organizations and Retention in Randomized Clinical Trials</div>
-        <div class="paper-media">Presented at: University of Verona, NHEM seminar</div>
-    </div>
+  <div class="wip-item">
+    <div class="paper-title">Losing Control: Patient Organizations and Retention in Randomized Clinical Trials</div>
+    <div class="paper-authors">Solo-authored</div>
+    <div class="paper-media">Presented at: University of Verona, NHEM seminar</div>
+  </div>
 
-    <div class="wip-item">
-      <div class="paper-title">The Price of Choice: How Private Hospital Access Shapes Out-of-Pocket Spending</div>
-      <div class="paper-authors">with P. Bertoli and C. Fertonani</div>
-    </div>
-
+  <div class="wip-item">
+    <div class="paper-title">The Price of Choice: How Private Hospital Access Shapes Out-of-Pocket Spending</div>
+    <div class="paper-authors">with P. Bertoli and C. Fertonani</div>
   </div>
 
 </div>
