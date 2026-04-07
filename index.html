@@ -18,19 +18,17 @@
     --bg-warm: #ece6db;
     --accent: #8b2500;
     --accent-hover: #a63000;
-    --accent-soft: rgba(139,37,0,0.08);
     --teal: #2a6f6f;
-    --teal-soft: rgba(42,111,111,0.08);
     --rule: #d4cfc6;
     --serif: 'Newsreader', Georgia, serif;
     --sans: 'DM Sans', -apple-system, sans-serif;
-    --max-w: 920px;
+    --max-w: 960px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html {
-    font-size: 17px;
+    font-size: 18px;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
@@ -39,8 +37,7 @@
     font-family: var(--sans);
     color: var(--ink);
     background: var(--bg);
-    line-height: 1.65;
-    min-height: 100vh;
+    line-height: 1.7;
   }
 
   a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
@@ -51,7 +48,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(245,241,235,0.92);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--rule);
@@ -60,7 +57,7 @@
   nav .nav-inner {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 0.85rem 2rem;
+    padding: 0.9rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -69,13 +66,13 @@
   nav .nav-name {
     font-family: var(--serif);
     font-weight: 500;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--ink);
     text-decoration: none;
   }
   nav .nav-name:hover { text-decoration: none; color: var(--accent); }
 
-  nav .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+  nav .nav-links { display: flex; gap: 2rem; list-style: none; }
 
   nav .nav-links a {
     font-size: 0.82rem;
@@ -89,30 +86,32 @@
   nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
   nav .nav-links a.active { color: var(--accent); }
 
-  /* ── Header / Hero ──────────────────────── */
-  header {
+  /* ── Single page card ───────────────────── */
+  .page-card {
     max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 3rem 2rem 2rem;
-  }
-
-  .hero-card {
+    margin: 1.5rem auto;
     background: var(--bg-card);
-    border-radius: 8px;
-    padding: 2.2rem 2.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    padding: 3rem 3rem 2.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+    min-height: calc(100vh - 5rem);
   }
 
+  /* ── Hero ────────────────────────────────── */
   .hero-grid {
     display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 2.2rem;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
     align-items: start;
+    margin-bottom: 2.5rem;
   }
 
   .hero-photo {
-    width: 150px;
-    height: 188px;
+    width: auto;
+    height: 100%;
+    max-height: 280px;
+    min-height: 180px;
+    aspect-ratio: 3/4;
     object-fit: cover;
     object-position: center top;
     border-radius: 6px;
@@ -122,83 +121,71 @@
 
   .hero-text h1 {
     font-family: var(--serif);
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 400;
     letter-spacing: -0.025em;
     line-height: 1.15;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
   }
 
   .hero-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--ink-muted);
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
   }
 
   .hero-bio {
-    font-size: 0.92rem;
+    font-size: 1rem;
     color: var(--ink-light);
-    line-height: 1.72;
+    line-height: 1.75;
   }
 
   .hero-links {
-    margin-top: 1.2rem;
+    margin-top: 1.3rem;
     display: flex;
-    gap: 1.2rem;
+    gap: 1.3rem;
     flex-wrap: wrap;
   }
 
   .hero-links a {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--accent);
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
   }
 
-  .hero-links a svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .hero-links a svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-  /* ── Card sections ──────────────────────── */
-  .main-card-section {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .main-card {
-    background: var(--bg-card);
-    border-radius: 6px;
-    padding: 1.8rem 2rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
-  }
-
-  /* ── Section heading (outside card) ───── */
-  .section-label {
+  /* ── Section divider ────────────────────── */
+  .section-divider {
     font-family: var(--serif);
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 400;
-    margin-bottom: 1.3rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.55rem;
     border-bottom: 1px solid var(--rule);
+    margin-bottom: 1.3rem;
+    margin-top: 2.5rem;
   }
+
+  .section-divider:first-of-type { margin-top: 0; }
 
   /* ── Featured paper ─────────────────────── */
   .featured-title {
     font-family: var(--serif);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    line-height: 1.35;
-    margin-bottom: 0.2rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
   }
 
   .featured-authors {
-    font-size: 0.85rem;
+    font-size: 0.92rem;
     color: var(--ink-muted);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 
-  /* ── Abstract toggle ────────────────────── */
   .abstract-row {
     display: flex;
     align-items: center;
@@ -207,7 +194,7 @@
   }
 
   .abstract-toggle {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--ink-muted);
     background: none;
@@ -234,22 +221,22 @@
 
   .paper-status {
     display: inline-block;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding: 0.16rem 0.5rem;
+    padding: 0.18rem 0.55rem;
     border-radius: 3px;
   }
 
   .status-review { background: #fff3e0; color: #e65100; }
 
   .featured-abstract {
-    font-size: 0.87rem;
+    font-size: 0.95rem;
     color: var(--ink-light);
-    line-height: 1.65;
-    margin-top: 0.4rem;
-    padding-left: 0.9rem;
+    line-height: 1.7;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
     border-left: 2px solid var(--rule);
     display: none;
   }
@@ -257,30 +244,23 @@
   .featured-abstract.open { display: block; }
 
   .featured-links {
-    margin-top: 0.6rem;
+    margin-top: 0.7rem;
   }
 
-  .featured-links a { font-size: 0.82rem; font-weight: 500; }
-  .featured-links .sep { color: var(--rule); margin: 0 0.5rem; font-weight: 400; }
-
-  .see-all-link {
-    display: inline-block;
-    margin-top: 0.8rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-  }
+  .featured-links a { font-size: 0.88rem; font-weight: 500; }
+  .featured-links .sep { color: var(--rule); margin: 0 0.55rem; font-weight: 400; }
 
   /* ── News list ──────────────────────────── */
   .news-list {
-    padding-left: 1.2rem;
+    padding-left: 1.3rem;
     margin: 0;
   }
 
   .news-list li {
-    font-size: 0.87rem;
+    font-size: 0.95rem;
     color: var(--ink-light);
-    line-height: 1.6;
-    padding: 0.3rem 0;
+    line-height: 1.65;
+    padding: 0.35rem 0;
   }
 
   .news-list .news-date {
@@ -292,24 +272,22 @@
   footer {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 3rem 2rem 2.5rem;
+    padding: 1.5rem 2.5rem 2rem;
     text-align: center;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--ink-muted);
   }
 
   /* ── Responsive ─────────────────────────── */
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     html { font-size: 16px; }
-    .hero-card { padding: 1.5rem; }
+    .page-card { margin: 0; border-radius: 0; padding: 2rem 1.5rem; min-height: auto; }
     .hero-grid { grid-template-columns: 1fr; gap: 1.2rem; }
-    .hero-photo { width: 115px; height: 144px; }
-    .hero-text h1 { font-size: 1.75rem; }
+    .hero-photo { width: 130px; height: auto; max-height: none; min-height: auto; }
+    .hero-text h1 { font-size: 1.8rem; }
     nav .nav-inner { padding: 0.8rem 1.2rem; }
     nav .nav-links { gap: 1rem; }
     nav .nav-links a { font-size: 0.74rem; }
-    header, .main-card-section, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .main-card { padding: 1.3rem 1.4rem; }
   }
 </style>
 </head>
@@ -327,68 +305,66 @@
   </div>
 </nav>
 
-<header>
-  <div class="hero-card">
-    <div class="hero-grid">
-      <img class="hero-photo" src="photo.jpg" alt="Giovanni Righetti">
-      <div class="hero-text">
-        <h1>Giovanni Righetti</h1>
-        <div class="hero-subtitle">Postdoctoral Fellow, Nova School of Business &amp; Economics</div>
-        <p class="hero-bio">
-          I am a Postdoctoral Fellow at the Nova School of Business and Economics, under the supervision of Professor <a href="https://www.novasbe.unl.pt/en/faculty-research/faculty/faculty-detail/id/13/pedro-pita-barros">Pedro Pita Barros</a>. My main field of study is at the intersection between Health Economics and Industrial Organization. My scientific interests include pharmaceutical regulation, external reference pricing, and innovation. I obtained my PhD in Economics at the University of Verona in 2024 under the supervision of Professor <a href="https://www.dse.univr.it/?ent=persona&id=3990">Paolo Pertile</a>.
-        </p>
-        <div class="hero-links">
-          <a href="mailto:giovanni.righetti@novasbe.pt">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 8 10-8"/></svg>
-            Email
-          </a>
-          <a href="https://scholar.google.com/citations?user=D63vNmwAAAAJ&hl=it" target="_blank">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
-            Scholar
-          </a>
-          <a href="https://orcid.org/0000-0002-5455-7408" target="_blank">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.181-3.722-3.878-3.722h-2.441z"/></svg>
-            ORCID
-          </a>
-          <a href="https://www.linkedin.com/in/giovanni-righetti" target="_blank">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-            LinkedIn
-          </a>
-        </div>
+<div class="page-card">
+
+  <!-- ── Hero ──────────────────────────────── -->
+  <div class="hero-grid">
+    <img class="hero-photo" src="photo.jpg" alt="Giovanni Righetti">
+    <div class="hero-text">
+      <h1>Giovanni Righetti</h1>
+      <div class="hero-subtitle">Postdoctoral Fellow, Nova School of Business &amp; Economics</div>
+      <p class="hero-bio">
+        I am a Postdoctoral Fellow at the Nova School of Business and Economics, under the supervision of Professor <a href="https://www.novasbe.unl.pt/en/faculty-research/faculty/faculty-detail/id/13/pedro-pita-barros">Pedro Pita Barros</a>. My main field of study is at the intersection between Health Economics and Industrial Organization. My scientific interests include pharmaceutical regulation, external reference pricing, and innovation. I obtained my PhD in Economics at the University of Verona in 2024 under the supervision of Professor <a href="https://www.dse.univr.it/?ent=persona&id=3990">Paolo Pertile</a>.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:giovanni.righetti@novasbe.pt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 8 10-8"/></svg>
+          Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=D63vNmwAAAAJ&hl=it" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+          Scholar
+        </a>
+        <a href="https://orcid.org/0000-0002-5455-7408" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.847-1.181-3.722-3.878-3.722h-2.441z"/></svg>
+          ORCID
+        </a>
+        <a href="https://www.linkedin.com/in/giovanni-righetti" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
       </div>
     </div>
   </div>
-</header>
 
-<div class="main-card-section">
-  <h2 class="section-label">Job Market Paper</h2>
-  <div class="main-card">
-    <div class="featured-title">Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
-    <div class="featured-authors">with Simona Gamba and Paolo Pertile</div>
-    <div class="abstract-row">
-      <button class="abstract-toggle" onclick="toggleAbstract(this)"><span class="chevron">▶</span> Abstract</button>
-      <span class="paper-status status-review">Under Review</span>
-    </div>
-    <p class="featured-abstract">
-In years of growing pharmaceutical spending, regulators have exerted substantial effort to reduce the impact of this tendency. As part of this strategy, several countries have introduced external reference pricing (ERP), whereby one country uses the prices of a set of other countries as a reference in regulating the domestic price. The widespread adoption of ERP creates potentially complex mechanisms of strategic interaction at an international level. Our theoretical analysis shows that strategic responses to the adoption of ERP by one country can create spillover effects with unintended consequences, including a reduced ability to contain costs compared to what would be expected if strategic responses were ignored. Our empirical analysis uses a dataset of 65 anticancer drugs in 16 countries, and exploits the introduction of ERP in Germany in 2011 as part of the AMNOG bill in a difference-in-differences framework. In line with the theoretical prediction, our preferred specification indicates that the introduction of ERP in Germany led, on average, to a 6.6% price increase in those countries that were included in the German reference set, relative to those that were not. Results are robust to a range of different model specifications, including a novel approach to correct for the potential bias related to the presence of confidential price discounts.    </p>
-    <div class="featured-links">
-      <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
-      <span class="sep">|</span>
-      <a href="slides_jmp.pdf" target="_blank">Slides</a>
-    </div>
+  <!-- ── Job Market Paper ──────────────────── -->
+  <h2 class="section-divider">Job Market Paper</h2>
+  <div class="featured-title">Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
+  <div class="featured-authors">with Simona Gamba and Paolo Pertile</div>
+  <div class="abstract-row">
+    <button class="abstract-toggle" onclick="toggleAbstract(this)"><span class="chevron">▶</span> Abstract</button>
+    <span class="paper-status status-review">Under Review</span>
   </div>
-</div>
+  <p class="featured-abstract">
+    In years of growing pharmaceutical spending, regulators have exerted substantial effort to reduce the impact of this tendency. As part of this strategy, several countries have introduced external reference pricing (ERP), whereby one country uses the prices of a set of other countries as a reference in regulating the domestic price. The widespread adoption of ERP creates potentially complex mechanisms of strategic interaction at an international level. Our theoretical analysis shows that strategic responses to the adoption of ERP by one country can create spillover effects with unintended consequences, including a reduced ability to contain costs compared to what would be expected if strategic responses were ignored. Our empirical analysis uses a dataset of 65 anticancer drugs in 16 countries, and exploits the introduction of ERP in Germany in 2011 as part of the AMNOG bill in a difference-in-differences framework. In line with the theoretical prediction, our preferred specification indicates that the introduction of ERP in Germany led, on average, to a 6.6% price increase in those countries that were included in the German reference set, relative to those that were not. Results are robust to a range of different model specifications, including a novel approach to correct for the potential bias related to the presence of confidential price discounts.
+  </p>
+  <div class="featured-links">
+    <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
+    <span class="sep">|</span>
+    <a href="slides_jmp.pdf" target="_blank">Slides</a>
+  </div>
 
-<div class="main-card-section" style="padding-top: 1.8rem;">
-  <h2 class="section-label">News</h2>
-  <div class="main-card">
-    <ul class="news-list">
-      <li><span class="news-date">Apr 2026:</span> "The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" accepted for publication at the <strong>European Journal of Health Economics</strong>.</li>
-      <li><span class="news-date">17 May 2026:</span> Invited guest lecture on "Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation" for the course in Health Economics and Policy (BSc), University of Insubria.</li>
-      <li><span class="news-date">1-2 Jun 2026:</span> Presenting "The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Therapeutic Benefit of Cancer Drugs" at the <strong>X American-European Health Economics Study Group</strong> at the Hertie School, Berlin.</li>
-      <li><span class="news-date">15-17 Jul 2026:</span> Presenting "The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Therapeutic Benefit of Cancer Drugs" and "On the Long-Term Effects of Most Favored Nation Drug Pricing" at the <strong>EuHEA Conference 2026</strong> in Rotterdam.</li>
-    </ul>
-  </div>
+  <!-- ── News ──────────────────────────────── -->
+  <h2 class="section-divider">News</h2>
+  <ul class="news-list">
+    <li><span class="news-date">Apr 2026:</span> "The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" accepted for publication at the <strong>European Journal of Health Economics</strong>.</li>
+    <li><span class="news-date">17 May 2026:</span> Invited guest lecture on "Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation" for the course in Health Economics and Policy (BSc), University of Insubria.</li>
+    <li><span class="news-date">1-2 Jun 2026:</span> Presenting "The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Therapeutic Benefit of Cancer Drugs" at the <strong>X American-European Health Economics Study Group</strong> at the Hertie School, Berlin.</li>
+    <li><span class="news-date">15-17 Jul 2026:</span> Presenting "The Clinical Trial Balloon" and "On the Long-Term Effects of Most Favored Nation Drug Pricing" at the <strong>EuHEA Conference 2026</strong> in Rotterdam.</li>
+  </ul>
+
+  <!-- ── Footer ────────────────────────────── -->
+
 </div>
 
 <footer>
@@ -400,7 +376,7 @@ In years of growing pharmaceutical spending, regulators have exerted substantial
 
 <script>
 function toggleAbstract(btn) {
-  var abstract = btn.closest('.main-card').querySelector('.featured-abstract');
+  var abstract = btn.closest('.page-card').querySelector('.featured-abstract');
   abstract.classList.toggle('open');
   btn.classList.toggle('open');
 }
