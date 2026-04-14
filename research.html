@@ -23,7 +23,16 @@
     --sans: 'DM Sans', -apple-system, sans-serif;
     --max-w: 1320px;
   }
-
+  
+.paper-number {
+  display: inline-block;
+  width: 2rem;
+  margin-left: -2rem;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+  
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { font-size: 18px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
@@ -75,7 +84,7 @@
     margin: 0 auto 1.5rem;
     background: var(--bg-card);
     border-radius: 10px;
-    padding: 3rem 3rem 2.5rem;
+    padding: 3rem 3rem 2.5rem 5rem;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
     min-height: calc(100vh - 8rem);
   }
@@ -255,7 +264,7 @@
   <h2 class="section-divider">Publications</h2>
 
   <div class="paper-item">
-    <div class="paper-title">The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany</div>
+    <div class="paper-title"><span class="paper-number">[1]</span>The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany</div>
     <div class="paper-authors">Giovanni Righetti (forthcoming). <em>European Journal of Health Economics.</em>  </div>
     <div class="abstract-row">
       <button class="abstract-toggle" onclick="toggleAbstract('abs-amnog', this)"><span class="chevron">▶</span> Abstract</button>
