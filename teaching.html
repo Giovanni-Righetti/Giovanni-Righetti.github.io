@@ -58,25 +58,7 @@
   nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
   nav .nav-links a.active { color: var(--accent); }
 
-  /* ── Single page card ───────────────────── */
-  .page-card {
-    max-width: var(--max-w);
-    margin: 1.5rem auto;
-    background: var(--bg-card);
-    border-radius: 10px;
-    padding: 3rem 3rem 2.5rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
-    min-height: calc(100vh - 5rem);
-  }
-
-  .page-card h1 {
-    font-family: var(--serif);
-    font-size: 2.4rem;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 2rem;
-  }
-
+  /* ── Page title (on background) ─────────── */
   .page-title {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -85,6 +67,17 @@
     font-size: 2.4rem;
     font-weight: 400;
     letter-spacing: -0.02em;
+  }
+
+  /* ── Single page card ───────────────────── */
+  .page-card {
+    max-width: var(--max-w);
+    margin: 0 auto 1.5rem;
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 3rem 3rem 2.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+    min-height: calc(100vh - 8rem);
   }
 
   /* ── Section divider ────────────────────── */
@@ -100,70 +93,81 @@
 
   .section-divider:first-of-type { margin-top: 0; }
 
-  /* ── Teaching row ───────────────────────── */
-  .teaching-row {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 1.2rem;
-    padding: 0.3rem 0;
-    align-items: start;
+  /* ── Item number ────────────────────────── */
+  .paper-number {
+    display: inline-block;
+    width: 2rem;
+    margin-left: -2rem;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    font-weight: 500;
   }
 
-  .teaching-row + .teaching-row {
-    margin-top: 1.2rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid #f0ede8;
+  /* ── Teaching item (mirrors paper-item) ─── */
+  .teaching-item {
+    padding: 0.2rem 0 0.2rem 2rem;
   }
 
-  .teaching-year {
+  .teaching-item + .teaching-item {
+    margin-top: 1rem;
+    padding-top: 0;
+  }
+
+  .teaching-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 0.1rem;
+  }
+
+  .teaching-details {
+    font-size: 0.92rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.1rem;
+  }
+
+  /* ── TA item ────────────────────────────── */
+  .ta-item {
+    padding: 0.2rem 0 0.2rem 2rem;
+  }
+
+  .ta-item + .ta-item {
+    margin-top: 0.6rem;
+    padding-top: 0;
+  }
+
+  .ta-year {
     font-family: var(--serif);
     font-size: 1.05rem;
     font-weight: 500;
-    color: var(--teal);
-    padding-top: 0.1rem;
-  }
-
-  .teaching-info h3 {
-    font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 600;
     color: var(--ink);
-    margin-bottom: 0.05rem;
+    display: inline;
   }
 
-  .teaching-info .institution {
-    font-size: 0.9rem;
+  .ta-courses {
+    font-size: 0.92rem;
     color: var(--ink-muted);
-  }
-
-  .teaching-info .level {
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-  }
-
-  /* ── TA rows ────────────────────────────── */
-  .ta-row {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 1.2rem;
-    padding: 0.45rem 0;
-  }
-
-  .ta-row + .ta-row {
-    border-top: 1px solid #f0ede8;
-  }
-
-  .ta-row .courses {
-    font-size: 0.95rem;
-    color: var(--ink-light);
-    line-height: 1.6;
   }
 
   /* ── Supervision ────────────────────────── */
   .supervision-intro {
-    font-size: 0.95rem;
-    color: var(--ink-light);
-    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.8rem;
+    padding-left: 2rem;
+  }
+
+  .sup-item {
+    padding: 0.15rem 0 0.15rem 2rem;
+  }
+
+  .sup-item + .sup-item {
+    margin-top: 0.4rem;
+  }
+
+  .sup-item .ta-courses {
+    font-size: 0.92rem;
   }
 
   /* ── Footer ─────────────────────────────── */
@@ -180,11 +184,10 @@
   @media (max-width: 700px) {
     html { font-size: 16px; }
     .page-card { margin: 0; border-radius: 0; padding: 2rem 1.5rem; min-height: auto; }
+    .page-title { padding: 1.5rem 1.5rem 0.5rem; }
     nav .nav-inner { padding: 0.8rem 1.2rem; }
     nav .nav-links { gap: 1rem; }
     nav .nav-links a { font-size: 0.74rem; }
-    .teaching-row { grid-template-columns: 50px 1fr; }
-    .ta-row { grid-template-columns: 50px 1fr; }
   }
 </style>
 </head>
@@ -209,68 +212,47 @@
   <!-- ═══ Adjunct Professor ═══ -->
   <h2 class="section-divider">Adjunct Professor</h2>
 
-  <div class="teaching-row">
-    <div class="teaching-year">2026</div>
-    <div class="teaching-info">
-      <h3>Microeconomics</h3>
-      <div class="institution">Catholic University of Milan</div>
-      <div class="level">BSc in Economics and Business Management</div>
-    </div>
+  <div class="teaching-item">
+    <div class="teaching-title"><span class="paper-number">2026</span>Microeconomics</div>
+    <div class="teaching-details">Catholic University of Milan · BSc in Economics and Business Management</div>
   </div>
 
-  <div class="teaching-row">
-    <div class="teaching-year">2025</div>
-    <div class="teaching-info">
-      <h3>Economics and Policy of Innovation</h3>
-      <div class="institution">University of Verona</div>
-      <div class="level">MSc in Management and Business Strategy</div>
-    </div>
+  <div class="teaching-item">
+    <div class="teaching-title"><span class="paper-number">2025</span>Economics and Policy of Innovation</div>
+    <div class="teaching-details">University of Verona · MSc in Management and Business Strategy</div>
   </div>
 
-  <div class="teaching-row">
-    <div class="teaching-year">2024</div>
-    <div class="teaching-info">
-      <h3>Economics and Policy of Innovation</h3>
-      <div class="institution">University of Verona</div>
-      <div class="level">MSc in Management and Business Strategy</div>
-    </div>
+  <div class="teaching-item">
+    <div class="teaching-title"><span class="paper-number">2024</span>Economics and Policy of Innovation</div>
+    <div class="teaching-details">University of Verona · MSc in Management and Business Strategy</div>
   </div>
 
-  <div class="teaching-row">
-    <div class="teaching-year">2024</div>
-    <div class="teaching-info">
-      <h3>Microeconomics</h3>
-      <div class="institution">University of Verona</div>
-      <div class="level">BSc in Economics and Accounting</div>
-    </div>
+  <div class="teaching-item">
+    <div class="teaching-title"><span class="paper-number">2024</span>Microeconomics</div>
+    <div class="teaching-details">University of Verona · BSc in Economics and Accounting</div>
   </div>
 
   <!-- ═══ Teaching Assistant ═══ -->
   <h2 class="section-divider">Teaching Assistant — University of Verona</h2>
 
-  <div class="ta-row">
-    <div class="teaching-year">2022</div>
-    <div class="courses">Public Economics (BSc), Probability (PhD)</div>
+  <div class="ta-item">
+    <div class="ta-courses"><span class="paper-number">2022</span>Public Economics (BSc), Probability (PhD)</div>
   </div>
 
-  <div class="ta-row">
-    <div class="teaching-year">2021</div>
-    <div class="courses">Industrial Economics (BSc), Public Economics (BSc)</div>
+  <div class="ta-item">
+    <div class="ta-courses"><span class="paper-number">2021</span>Industrial Economics (BSc), Public Economics (BSc)</div>
   </div>
 
-  <div class="ta-row">
-    <div class="teaching-year">2020</div>
-    <div class="courses">Industrial Economics (BSc), Public Economics (BSc)</div>
+  <div class="ta-item">
+    <div class="ta-courses"><span class="paper-number">2020</span>Industrial Economics (BSc), Public Economics (BSc)</div>
   </div>
 
-  <div class="ta-row">
-    <div class="teaching-year">2019</div>
-    <div class="courses">Public Economics (BSc), Macroeconomics (BSc)</div>
+  <div class="ta-item">
+    <div class="ta-courses"><span class="paper-number">2019</span>Public Economics (BSc), Macroeconomics (BSc)</div>
   </div>
 
-  <div class="ta-row">
-    <div class="teaching-year">2018</div>
-    <div class="courses">Public Economics (BSc)</div>
+  <div class="ta-item">
+    <div class="ta-courses"><span class="paper-number">2018</span>Public Economics (BSc)</div>
   </div>
 
   <!-- ═══ Thesis Supervision ═══ -->
@@ -278,14 +260,12 @@
 
   <p class="supervision-intro">University of Verona — Economics and Policy of Innovation programme</p>
 
-  <div class="ta-row">
-    <div class="teaching-year">2026</div>
-    <div class="courses">2 graduated, 5 ongoing</div>
+  <div class="sup-item">
+    <div class="ta-courses"><span class="paper-number">2026</span>2 graduated, 5 ongoing</div>
   </div>
 
-  <div class="ta-row">
-    <div class="teaching-year">2025</div>
-    <div class="courses">5 graduated</div>
+  <div class="sup-item">
+    <div class="ta-courses"><span class="paper-number">2025</span>5 graduated</div>
   </div>
 
 </div>
