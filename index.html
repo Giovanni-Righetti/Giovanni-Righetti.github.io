@@ -171,32 +171,70 @@
 
   .section-divider:first-of-type { margin-top: 0; }
 
-  /* ── Featured paper ─────────────────────── */
-  .featured-title {
+  /* ── Paper item ─────────────────────────── */
+  .paper-item {
+    padding: 0.2rem 0 0.2rem 3rem;
+  }
+
+  .paper-number {
+    display: inline-block;
+    width: 3rem;
+    margin-left: -3rem;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+
+  .paper-title {
     font-family: var(--serif);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 500;
     line-height: 1.4;
     margin-bottom: 0.25rem;
   }
 
-  .featured-authors {
+  .paper-authors {
     font-size: 0.92rem;
     color: var(--ink-muted);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
-  .abstract-row {
+  .paper-status {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0;
+    margin-left: 0.8rem;
+  }
+
+  .status-review { background: none; color: #e65100; }
+
+  .paper-links {
+    margin-top: 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .paper-links a { font-size: 0.88rem; font-weight: 500; }
+  .paper-links .sep { color: var(--rule); margin: 0 0.55rem; font-weight: 400; }
+
+  .paper-links .abstract-toggle {
+    color: var(--accent);
+    font-size: 0.88rem;
+    font-weight: 500;
+    vertical-align: baseline;
+    line-height: 1;
+  }
+
+  .paper-links .abstract-toggle:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
   }
 
   .abstract-toggle {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--ink-muted);
     background: none;
     border: none;
     cursor: pointer;
@@ -206,8 +244,6 @@
     align-items: center;
     gap: 0.3rem;
   }
-
-  .abstract-toggle:hover { color: var(--ink); }
 
   .abstract-toggle .chevron {
     display: inline-block;
@@ -219,36 +255,17 @@
     transform: rotate(90deg);
   }
 
-  .paper-status {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.18rem 0.55rem;
-    border-radius: 3px;
-  }
-
-   .status-review { background: none; color: #e65100; padding: 0; }
-
-  .featured-abstract {
+  .paper-abstract {
     font-size: 0.95rem;
     color: var(--ink-light);
     line-height: 1.7;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
     padding-left: 1rem;
     border-left: 2px solid var(--rule);
     display: none;
   }
 
-  .featured-abstract.open { display: block; }
-
-  .featured-links {
-    margin-top: 0.7rem;
-  }
-
-  .featured-links a { font-size: 0.88rem; font-weight: 500; }
-  .featured-links .sep { color: var(--rule); margin: 0 0.55rem; font-weight: 400; }
+  .paper-abstract.open { display: block; }
 
   /* ── News list ──────────────────────────── */
   .news-list {
@@ -288,6 +305,8 @@
     nav .nav-inner { padding: 0.8rem 1.2rem; }
     nav .nav-links { gap: 1rem; }
     nav .nav-links a { font-size: 0.74rem; }
+    .paper-item { padding-left: 2.5rem; }
+    .paper-number { width: 2.5rem; margin-left: -2.5rem; }
   }
 </style>
 </head>
@@ -341,15 +360,15 @@
   <h2 class="section-divider">Job Market Paper</h2>
   <div class="paper-item">
     <div class="paper-title"><span class="paper-number">[1]</span>Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation</div>
-    <div class="paper-authors">with Simona Gamba and Paolo Pertile  <span class="paper-status status-review">R&R at RAND Journal of Economics</span> </div>
+    <div class="paper-authors">with Simona Gamba and Paolo Pertile <span class="paper-status status-review">R&amp;R at RAND Journal of Economics</span></div>
     <div class="paper-links">
-       <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)"><span class="chevron">▶</span> Abstract</button>
+      <button class="abstract-toggle" onclick="toggleAbstract('abs-erp', this)"><span class="chevron">▶</span> Abstract</button>
       <span class="sep">|</span>
       <a href="http://dx.doi.org/10.2139/ssrn.5381635" target="_blank">SSRN</a>
       <span class="sep">|</span>
       <a href="slides_jmp.pdf" target="_blank">Slides</a>
     </div>
-   <p class="paper-abstract" id="abs-erp">
+    <p class="paper-abstract" id="abs-erp">
       Many countries use external reference pricing (ERP), linking domestic drug prices to foreign benchmarks. We show theoretically that strategic firm responses to ERP can create cross-country spillovers with unintended consequences. Exploiting the introduction of ERP in Germany in 2011 in a difference-in-differences design, we find that this policy caused a 6.6% price increase in reference countries relative to non-reference markets. Results are robust across specifications, including an approach that accounts for confidential discounts.
     </p>
   </div>
@@ -357,13 +376,11 @@
   <!-- ── News ──────────────────────────────── -->
   <h2 class="section-divider">News</h2>
   <ul class="news-list">
-    <li><span class="news-date">Apr 2026:</span> "The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" accepted for publication at the <strong>European Journal of Health Economics</strong>.</li>
+    <li><span class="news-date">Apr 2026:</span> "The Impact of Health Technology Assessment on Pharmaceutical Prices: Evidence from Germany" published at the <strong>European Journal of Health Economics</strong>.</li>
     <li><span class="news-date">17 May 2026:</span> Invited guest lecture on "Pricing Without Borders: Spillovers of External Reference Pricing in Pharmaceutical Regulation" for the course in Health Economics and Policy (BSc), University of Insubria.</li>
     <li><span class="news-date">1-2 Jun 2026:</span> Presenting "The Clinical Trial Balloon: How Strategic Eligibility Design Inflates Therapeutic Benefit of Cancer Drugs" at the <strong>X American-European Health Economics Study Group</strong> at the Hertie School, Berlin.</li>
     <li><span class="news-date">15-17 Jul 2026:</span> Presenting "The Clinical Trial Balloon" and "On the Long-Term Effects of Most Favored Nation Drug Pricing" at the <strong>EuHEA Conference 2026</strong> in Rotterdam.</li>
   </ul>
-
-  <!-- ── Footer ────────────────────────────── -->
 
 </div>
 
@@ -375,9 +392,9 @@
 </footer>
 
 <script>
-function toggleAbstract(btn) {
-  var abstract = btn.closest('.page-card').querySelector('.featured-abstract');
-  abstract.classList.toggle('open');
+function toggleAbstract(id, btn) {
+  var el = document.getElementById(id);
+  el.classList.toggle('open');
   btn.classList.toggle('open');
 }
 </script>
